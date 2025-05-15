@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'green',
         paddingVertical: 10,
         paddingHorizontal: 30,
+        marginLeft: 10,
         marginTop: 20,
         borderRadius: 10
     },
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'red',
       paddingVertical: 10,
       paddingHorizontal: 30,
+      marginRight: 10,
       marginTop: 20,
       borderRadius: 10
     },
@@ -46,7 +48,8 @@ const styles = StyleSheet.create({
     },
     titulo_campos: {
       fontSize: 20,
-      color: 'black'
+      color: 'black',
+      marginTop: 20,
     },
     caixa_texto: {
         color: 'black',

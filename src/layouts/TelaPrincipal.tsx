@@ -1,27 +1,36 @@
-import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Alert, Button, StyleSheet, View } from 'react-native';
 import { PrincipalProps } from '../navigation/HomeNavigator';
 import { styles } from '../styles/styles';
-import Exemplo01 from '../components/Exemplo01';
-import Exemplo1 from '../components/Exemplo1';
-import Exemplo05_Text from '../components/Exemplo05_Text';
-import Exemplo06_TextInput from '../components/Exemplo06_TextInput';
-import Exemplo07_Image from '../components/Exemplo07_Image';
+import CampoDeTexto from './CampoDeTexto';
+import MediaAluno from './MediaAluno';
+import Lista from './Lista';
+import Atividade3 from './CampoDeTexto';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from './HomeNavigator';
 
-//Componente chamado TelaPrincipal que recebe 
-//PrincipalProps 
-//como parametro e constrói uma View com o componente 
-//HelloWorld e Exemplo1 dentro
-const TelaPrincipal = (props: PrincipalProps) => {
-  
+type Props = {
+  navigation: NativeStackNavigationProp<RootStackParamList, 'TelaPrincipal'>;
+};
+
+const TelaPrincipal = ({ navigation }: Props) => {
   return (
-    <View
-      style={[styles.tela]}>
-        <Exemplo07_Image/>
-        {/* <Exemplo1/> */}
+    <View style={styles_local.container}>
+      <Button
+        title="Ir para Lista"
+        onPress={() => navigation.navigate('Lista')}
+      />
     </View>
   );
-}
+};
 
-//exportando o componente TelaPrincipal para ficar visível para outros arquivos
+const styles_local = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    marginHorizontal: 20,
+    gap: 15,
+  },
+});
+
 export default TelaPrincipal;
