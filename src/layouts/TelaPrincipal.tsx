@@ -7,18 +7,27 @@ import MediaAluno from './MediaAluno';
 import Lista from './Lista';
 import Atividade3 from './CampoDeTexto';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from './HomeNavigator';
+import { RootStackParamList } from '../navigation/HomeNavigator';
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'TelaPrincipal'>;
 };
 
-const TelaPrincipal = ({ navigation }: Props) => {
+const TelaPrincipal = ( props : PrincipalProps ) => {
   return (
     <View style={styles_local.container}>
       <Button
         title="Ir para Lista"
-        onPress={() => navigation.navigate('Lista')}
+        onPress={() => props.navigation.navigate('Lista')}
+      />
+      <Button
+        title="Ir para MediaAluno"
+        onPress={() => props.navigation.navigate('MediaAluno', {nome: 'Pedro', nota1: 6, nota2: 9})}
+      />
+      <Button
+        title="Ir para CampoDeTexto"
+        onPress={() => props.navigation.navigate('CampoDeTexto')}
+
       />
     </View>
   );

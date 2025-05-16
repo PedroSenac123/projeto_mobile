@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from './HomeNavigator';
+import { RootStackParamList } from '../navigation/HomeNavigator';
+import { MediaProps } from '../navigation/HomeNavigator';
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'MediaAluno'>;
 };
 
-const MediaAluno = ({ navigation }: Props) => {
+const MediaAluno = ( props : MediaProps ) => {
   const nome = 'Pedro';
   const nota1 = 6;
   const nota2 = 9;
@@ -16,24 +17,24 @@ const MediaAluno = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Resultado do Aluno</Text>
-      <Text>Nome: {nome}</Text>
-      <Text>Nota 1: {nota1}</Text>
-      <Text>Nota 2: {nota2}</Text>
-      <Text>Média: {media.toFixed(1)}</Text>
+      <Text style={styles.texto}>Nome: {nome}</Text>
+      <Text style={styles.texto}>Nota 1: {nota1}</Text>
+      <Text style={styles.texto}>Nota 2: {nota2}</Text>
+      <Text style={styles.texto}>Média: {media.toFixed(1)}</Text>
 
       {media >= 7 ? (
         <>
           <Text style={styles.aprovado}>Aprovado ✅</Text>
-          <Text>Parabéns, você passou!</Text>
+          <Text style={styles.texto2}>Parabéns, você passou!</Text>
         </>
       ) : (
         <>
           <Text style={styles.reprovado}>Reprovado ❌</Text>
-          <Text>Que pena, você não passou, estude mais para a próxima vez.</Text>
+          <Text style={styles.texto2}>Que pena, você não passou, estude mais para a próxima vez.</Text>
         </>
       )}
 
-      <Button title="Voltar" onPress={() => navigation.goBack()} />
+      <Button title="Voltar" onPress={() => props.navigation.goBack()} />
     </View>
   );
 };
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 10,
+    color:"black",
   },
   aprovado: {
     color: 'green',
@@ -60,6 +62,17 @@ const styles = StyleSheet.create({
     color: 'red',
     fontWeight: 'bold',
     marginTop: 10,
+  },
+  texto:{
+    fontSize: 18,
+    marginTop: 10,
+    color:"black",
+  },
+  texto2:{
+    fontSize: 18,
+    marginTop: 10,
+    color:"black",
+    marginBottom: 80,
   },
 });
 

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Alert, StyleSheet } from 'react-native';
+import { View, TextInput, Button, Alert, StyleSheet, Pressable } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from './HomeNavigator';
+import { CampoProps, RootStackParamList } from '../navigation/HomeNavigator';
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'MediaAluno'>;
 };
 
-const CampoDeTexto = ({ navigation }: Props) => {
+const CampoDeTexto = (Props : CampoProps) => {
   const [texto, setTexto] = useState('');
 
   const exibirTexto = () => {
@@ -22,8 +22,8 @@ const CampoDeTexto = ({ navigation }: Props) => {
         value={texto}
         onChangeText={setTexto}
       />
-      <Button title="Exibir texto" onPress={exibirTexto} />
-      <Button title="Voltar" onPress={() => navigation.goBack()} />
+      <Button title="Exibir texto" onPress={exibirTexto}/>
+      <Button title="Voltar" onPress={() => Props.navigation.goBack()} />
     </View>
   );
 };

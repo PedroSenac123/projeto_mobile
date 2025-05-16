@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, FlatList, Text, StyleSheet } from 'react-native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from './HomeNavigator';
+import { ListaProps } from '../navigation/HomeNavigator';
 
-type Props = {
-  navigation: NativeStackNavigationProp<RootStackParamList, 'Lista'>;
-};
 
 type Item = {
   texto: string;
 };
 
-const Lista = ({ navigation }: Props) => {
+const Lista = ( props : ListaProps ) => {
   const [texto, setTexto] = useState('');
   const [itens, setItens] = useState<Item[]>([]);
 
@@ -42,7 +38,7 @@ const Lista = ({ navigation }: Props) => {
         )}
       />
 
-      <Button title="Voltar" onPress={() => navigation.goBack()} />
+      <Button title="Voltar" onPress={() => props.navigation.goBack()} />
     </View>
   );
 };
